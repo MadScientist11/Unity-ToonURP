@@ -1,51 +1,37 @@
-#ifndef CUSTOM_LIGHTING_INCLUDED
-#define CUSTOM_LIGHTING_INCLUDED
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
-/*
-- This undef (un-define) is required to prevent the "invalid subscript 'shadowCoord'" error,
-  which occurs when _MAIN_LIGHT_SHADOWS is used with 1/No Shadow Cascades with the Unlit Graph.
-- It's technically not required for the PBR/Lit graph, so I'm using the SHADERPASS_FORWARD to ignore it for the pass.
-*/
-#ifndef SHADERGRAPH_PREVIEW
-    #if VERSION_GREATER_EQUAL(9, 0)
-        #include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
-        #if (SHADERPASS != SHADERPASS_FORWARD)
-            #undef REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR
-        #endif
-    #else
-        #ifndef SHADERPASS_FORWARD
-            #undef REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR
-        #endif
-    #endif
-#endif
-// Also see https://github.com/Cyanilux/URP_ShaderGraphCustomLighting
 
-void MainLight_float(float3 WorldPos, out float3 Direction, out float3 Color, out float ShadowAtten, out float DistanceAtten)
+float _Smoothness;
+
+struct Attributes
 {
-#if defined(SHADERGRAPH_PREVIEW)
-    Direction = float3(0.5, 0.5, 0);
-    Color = 1;
-    ShadowAtten = 1;
-    DistanceAtten = 1;
-#else
-	float4 shadowCoord = TransformWorldToShadowCoord(WorldPos);
+    float4 positionOS : POSITION;
+    float3 normalOS : NORMAL;
+    float2 uv : TEXCOORD0;
+};
 
-    Light mainLight = GetMainLight(shadowCoord);
-    Direction = mainLight.direction;
-    Color = mainLight.color;
-    DistanceAtten = mainLight.distanceAttenuation;
-	#if !defined(_MAIN_LIGHT_SHADOWS) || defined(_RECEIVE_SHADOWS_OFF)
-		ShadowAtten = 1.0h;
-    #else
-	    ShadowSamplingData shadowSamplingData = GetMainLightShadowSamplingData();
-	    float shadowStrength = GetMainLightShadowStrength();
-	    ShadowAtten = SampleShadowmap(shadowCoord, TEXTURE2D_ARGS(_MainLightShadowmapTexture,
-	    sampler_MainLightShadowmapTexture),
-	    shadowSamplingData, shadowStrength, false);
-    #endif
-#endif
+struct Interpolators
+{
+    float4 positionCS : SV_POSITION;
+    float2 uv : TEXCOORD0;
+    float3 positionWS : TEXCOORD1;
+    float3 normalWS : TEXCOORD2;
+};
+
+Interpolators Vertex(Attributes input)
+{
+    Interpolators output;
+    
+    VertexPositionInputs posInputs = GetVertexPositionInputs(input.positionOS);
+    output.positionCS = posInputs.positionCS;
+    output.positionWS = posInputs.positionWS;
+    
+    VertexNormalInputs normalInputs = GetVertexNormalInputs(input.normalOS);
+    output.normalWS = normalInputs.normalWS;
+    
+    return output;
 }
-#ifndef SHADERGRAPH_PREVIEW
+
 half3 LightingLambertFixed(half3 lightDir, half3 normal)
 {
     half NdotL = saturate(dot(normal, lightDir));
@@ -135,29 +121,20 @@ half4 UniversalFragmentBlinnPhongFixed(InputData inputData, SurfaceData surfaceD
 
     return CalculateFinalColor(lightingData, surfaceData.alpha);
 }
-#endif
 
 
-void CalculateBlinnPhong_float(float3 normalWS,float3 positionWS, out float4 lighting)
+float4 Fragment(Interpolators input) : SV_Target
 {
-    #if defined(SHADERGRAPH_PREVIEW)
-    lighting = float4(0,0,0,0);
-    #else
     InputData lightingInput = (InputData)0;
-    lightingInput.normalWS = normalWS;
-    lightingInput.viewDirectionWS = GetWorldSpaceViewDir(positionWS);
-    lightingInput.shadowCoord = TransformWorldToShadowCoord(positionWS);
+    lightingInput.normalWS = normalize(input.normalWS);
+    lightingInput.viewDirectionWS = GetWorldSpaceViewDir(input.positionWS);
+    lightingInput.shadowCoord = TransformWorldToShadowCoord(input.positionWS);
     
     SurfaceData surfaceInput = (SurfaceData)0;
     surfaceInput.albedo = half3(1,1,0);
     surfaceInput.alpha = 1;
     surfaceInput.specular = 1;
-    surfaceInput.smoothness = 0.5f;
-    lighting =  UniversalFragmentBlinnPhongFixed(lightingInput, surfaceInput);
-    #endif
-
+    surfaceInput.smoothness = _Smoothness;
+    
+    return UniversalFragmentBlinnPhongFixed(lightingInput, surfaceInput);
 }
-
-
-
-#endif
