@@ -51,7 +51,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _EdgeSmoothness: 0.05
+    - _Offset: 0.45
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _Smoothness: 0.593
+    m_Colors:
+    - _ShadowColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 0}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: -0.56}
+    - _Tint: {r: 0.13389996, g: 0.486924, b: 0.5566038, a: 0}
   m_BuildTextureStacks: []
