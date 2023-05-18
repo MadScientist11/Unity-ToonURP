@@ -53,6 +53,31 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "15e5a87df85147caa9297bcbaa2b59c4",
+    "m_Id": 926918596,
+    "m_DisplayName": "ShadowColor",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_ShadowColor",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.5686274766921997,
+        "y": 0.7960785031318665,
+        "z": 0.8117647767066956,
+        "w": 1.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "2bcc0311ecba40759375b87c9c7b86bd",
     "m_Id": -346287658,
@@ -63,6 +88,31 @@
     "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "4f7d5023e6564cbb8fb6b7d2b49ab79c",
+    "m_Id": 1276836232,
+    "m_DisplayName": "Tint",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Tint",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.349056601524353,
+        "y": 0.349056601524353,
+        "z": 0.349056601524353,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
     "m_Labels": []
 }
 
@@ -124,6 +174,12 @@
             "m_Id": "2bcc0311ecba40759375b87c9c7b86bd"
         },
         {
+            "m_Id": "15e5a87df85147caa9297bcbaa2b59c4"
+        },
+        {
+            "m_Id": "4f7d5023e6564cbb8fb6b7d2b49ab79c"
+        },
+        {
             "m_Id": "7bbf3eedc0ce45c6b24c72db34bdede1"
         },
         {
@@ -147,14 +203,18 @@
         "7f37b951-9aae-4305-b987-f5f4f303c2ac",
         "801b913c-fdad-4765-8422-15032dd25c6d",
         "fa9ad9f7-6df6-4936-bd53-d8dcd7a08acc",
-        "06d865e4-6698-4f10-8f0d-6cc0251ff862"
+        "06d865e4-6698-4f10-8f0d-6cc0251ff862",
+        "8bbfca6d-5e07-4112-b1c7-858e1ff41773",
+        "38fb7e40-c9ef-4f00-9ca7-b5e9bbe954d2"
     ],
     "m_PropertyIds": [
         -1461755111,
         1678092213,
         -1455973320,
         -1543616661,
-        -346287658
+        -346287658,
+        926918596,
+        1276836232
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
