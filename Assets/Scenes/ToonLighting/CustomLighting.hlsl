@@ -46,5 +46,16 @@ void MainLight_float(float3 positionWS, out float3 Direction, out float3 Color, 
 #endif
 }
 
+void LightingSpecular_float(float3 lightColor, float3 lightDirWS, float3 normalWS,float3 viewDirWS, float3 specular, float smoothness, out float3 outSpecular)
+{
+    #if defined(SHADERGRAPH_PREVIEW)
+    outSpecular = 0;
+    #else
+    smoothness = exp2(10 * smoothness + 1);
+    normalWS = normalize(normalWS);
+    viewDirWS = SafeNormalize(viewDirWS);
+    outSpecular = LightingSpecular(lightColor, lightDirWS, normalWS, viewDirWS, float4(specular,0), smoothness);
+    #endif
+}
 
 #endif

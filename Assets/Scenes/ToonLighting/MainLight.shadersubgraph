@@ -57,20 +57,6 @@
                 "m_Node": {
                     "m_Id": "4db8a56df9ed469b8996124501a583eb"
                 },
-                "m_SlotId": 3
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "566665dc4b6a45aea341b60d389a129b"
-                },
-                "m_SlotId": 4
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "4db8a56df9ed469b8996124501a583eb"
-                },
                 "m_SlotId": 4
             },
             "m_InputSlot": {
@@ -183,10 +169,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -849.0,
-            "y": -22.99999237060547,
-            "width": 211.0,
-            "height": 245.0
+            "x": -848.0000610351563,
+            "y": -22.9999942779541,
+            "width": 267.0,
+            "height": 350.0000305175781
         }
     },
     "m_Slots": [
@@ -201,9 +187,6 @@
         },
         {
             "m_Id": "c18b8e4d1a094af1ad9366e91cade709"
-        },
-        {
-            "m_Id": "f71df6f7b2ff4f4f8eb66700d3c995e2"
         }
     ],
     "synonyms": [
@@ -250,9 +233,6 @@
         },
         {
             "m_Id": "be98b60fe2fe4171a02588efd41906f2"
-        },
-        {
-            "m_Id": "da033d19dd7c42648baba2fc69bb124c"
         }
     ],
     "synonyms": [],
@@ -397,21 +377,6 @@
 }
 
 {
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "da033d19dd7c42648baba2fc69bb124c",
-    "m_Id": 4,
-    "m_DisplayName": "DistanceAtten",
-    "m_SlotType": 0,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "DistanceAtten",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
-}
-
-{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.PositionNode",
     "m_ObjectId": "f2426a5a3aca49a5a6291614c82bce7b",
@@ -446,20 +411,5 @@
     },
     "m_Space": 4,
     "m_PositionSource": 0
-}
-
-{
-    "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
-    "m_ObjectId": "f71df6f7b2ff4f4f8eb66700d3c995e2",
-    "m_Id": 3,
-    "m_DisplayName": "DistanceAttenuation",
-    "m_SlotType": 1,
-    "m_Hidden": false,
-    "m_ShaderOutputName": "DistanceAttenuation",
-    "m_StageCapability": 3,
-    "m_Value": 0.0,
-    "m_DefaultValue": 0.0,
-    "m_Labels": []
 }
 
