@@ -1,5 +1,6 @@
 #ifndef CUSTOM_LIGHTING_INCLUDED
 #define CUSTOM_LIGHTING_INCLUDED
+
 //#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 /*
 - This undef (un-define) is required to prevent the "invalid subscript 'shadowCoord'" error,
