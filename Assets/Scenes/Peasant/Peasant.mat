@@ -12,7 +12,8 @@ Material:
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _BENDAY
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -60,6 +61,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: d202c093c263d3144b8b179ab645035c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -97,6 +102,7 @@ Material:
     - ONESTEPSHADOWS: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _BENDAY: 1
     - _BacklightRim: 1.02
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -122,6 +128,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RimIntensity: 4
+    - _ShadingMultiplier: 0.1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -134,10 +141,10 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+    - _ShadowColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Specular: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
-    - _Tint: {r: 0.6792453, g: 0.49268717, b: 0.24670699, a: 0}
+    - _Tint: {r: 0.6415094, g: 0.46955076, b: 0.23905303, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5615765729594919541
 MonoBehaviour:
