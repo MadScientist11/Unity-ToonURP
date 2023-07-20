@@ -108,7 +108,7 @@ Material:
     - _AlphaToMask: 0
     - _BENDAY: 1
     - _BOOLEAN: 0
-    - _BacklightRim: 1.66
+    - _BacklightRim: 2.06
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
